@@ -6,7 +6,8 @@ var gulp         = require('gulp'),
     cssnano      = require('gulp-cssnano'), 
     rename       = require('gulp-rename'), 
     del          = require('del'),
-    autoprefixer = require('gulp-autoprefixer');
+    autoprefixer = require('gulp-autoprefixer'),
+    size         = require('gulp-filesize');
 
 gulp.task('sass-watch', function(){ 
     return gulp.src('app/scss/main.scss')
@@ -52,20 +53,22 @@ gulp.task('prebuild', async function() {
         .pipe(uglify()) 
         .pipe(gulp.dest('dist/js'));
 
+    var buildHtml = gulp.src('app/*.html') 
+        .pipe(gulp.dest('dist'));    
+
+    var buildJs = gulp.src('app/js/**/*') 
+        .pipe(gulp.dest('dist/js'))
+        .pipe(size());
+
     var buildCss = gulp.src(['app/css/**/*'])
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest('dist/css'))
+        .pipe(size());
 
     var builImg = gulp.src('app/img/**/*')
         .pipe(gulp.dest('dist/img'));
 
     var buildFonts = gulp.src('app/fonts/**/*') 
         .pipe(gulp.dest('dist/fonts'));
-
-    var buildJs = gulp.src('app/js/**/*') 
-        .pipe(gulp.dest('dist/js'));
-
-    var buildHtml = gulp.src('app/*.html') 
-        .pipe(gulp.dest('dist'));
 
 });
 
