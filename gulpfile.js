@@ -6,6 +6,7 @@ var gulp         = require('gulp'),
     cssnano      = require('gulp-cssnano'), 
     rename       = require('gulp-rename'), 
     del          = require('del'),
+    tinypng      = require('gulp-tinypng'),
     autoprefixer = require('gulp-autoprefixer'),
     size         = require('gulp-filesize');
 
@@ -40,6 +41,12 @@ gulp.task('clean', async function() {
     return del.sync('dist/'); 
 });
 
+gulp.task('tinypng', function () {
+    gulp.src('app/img/**/*.png')
+        .pipe(tinypng('DK8fLkHsGhFwvb1Q5BzCqFYLtQ1gsQh8'))
+        .pipe(gulp.dest('app/img/compressed_images'));
+});
+
 gulp.task('prebuild', async function() {
 
     var minCss = gulp.src('app/css/main.css')
@@ -65,6 +72,7 @@ gulp.task('prebuild', async function() {
         .pipe(size());
 
     var builImg = gulp.src('app/img/**/*')
+        .pipe(tinypng('DK8fLkHsGhFwvb1Q5BzCqFYLtQ1gsQh8'))
         .pipe(gulp.dest('dist/img'));
 
     var buildFonts = gulp.src('app/fonts/**/*') 
