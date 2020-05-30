@@ -3,12 +3,10 @@ var gulp         = require('gulp'),
     browserSync  = require('browser-sync'),
     concat       = require('gulp-concat'), 
     uglify       = require('gulp-uglifyjs'), 
-    cssnano      = require('gulp-cssnano'), 
-    rename       = require('gulp-rename'), 
     del          = require('del'),
-    tinypng      = require('gulp-tinypng'),
     autoprefixer = require('gulp-autoprefixer'),
-    size         = require('gulp-filesize');
+    size         = require('gulp-filesize'),
+    concatCss    = require('gulp-concat-css');
 
 gulp.task('sass-watch', function(){ 
     return gulp.src('app/scss/main.scss')
@@ -41,21 +39,16 @@ gulp.task('clean', async function() {
     return del.sync('dist/'); 
 });
 
-gulp.task('tinypng', function () {
-    gulp.src('app/img/**/*.png')
-        .pipe(tinypng('DK8fLkHsGhFwvb1Q5BzCqFYLtQ1gsQh8'))
-        .pipe(gulp.dest('app/img/compressed_images'));
-});
 
 gulp.task('prebuild', async function() {
 
-    var minCss = gulp.src('app/css/main.css')
-        .pipe(sass())
-        .pipe(cssnano())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('app/css'));
+    var minCss = gulp.src('app/css/**/*.css')
+        .pipe(concatCss('main.min.css'))
+        .pipe(gulp.dest('dist/css'));
 
-    var minJs = gulp.src('app/js/common.js')
+    var minJs = gulp.src([
+            'app/js/common.js'
+        ])
         .pipe(concat('common.min.js'))
         .pipe(uglify()) 
         .pipe(gulp.dest('dist/js'));
@@ -72,7 +65,6 @@ gulp.task('prebuild', async function() {
         .pipe(size());
 
     var builImg = gulp.src('app/img/**/*')
-        .pipe(tinypng('DK8fLkHsGhFwvb1Q5BzCqFYLtQ1gsQh8'))
         .pipe(gulp.dest('dist/img'));
 
     var buildFonts = gulp.src('app/fonts/**/*') 

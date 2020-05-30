@@ -1,1 +1,14 @@
-h1{color:red;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center}
+h1{color:red;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center};
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+h1 {
+  color: red;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
