@@ -1,10 +1,102 @@
-h1 {
-  color: red;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+html, body {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-x: hidden; }
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0; }
+
+.padding {
+  padding: 0 40px; }
+  @media (max-width: 1280px) {
+    .padding {
+      padding: 0 30px; } }
+  @media (max-width: 1100px) {
+    .padding {
+      padding: 0 20px; } }
+
+.padding-mob {
+  padding: 0 40px; }
+  @media (max-width: 1280px) {
+    .padding-mob {
+      padding: 0 30px; } }
+  @media (max-width: 1100px) {
+    .padding-mob {
+      padding: 0 20px; } }
+  @media (max-width: 576px) {
+    .padding-mob {
+      padding: 0; } }
+
+.margin {
+  margin-bottom: 45px; }
+  @media (max-width: 576px) {
+    .margin {
+      margin-bottom: 30px; } }
+
+button,
+input,
+select,
+a {
+  outline: none; }
+
+main {
+  min-height: -webkit-calc(100vh - 80px);
+  min-height: calc(100vh - 80px); }
+
+a, button {
+  text-decoration: none;
+  cursor: pointer; }
+
+ul {
+  list-style-type: none;
+  padding: 0; }
+
+.slick-slide {
+  outline: none; }
+
+textarea {
+  resize: none; }
+
+.hidden {
+  position: absolute;
+  opacity: 1; }
+
+@font-face {
+  font-family: "Light";
+  src: url("../fonts/BrutalType-Light.eot") format("eot"), url("../fonts/BrutalType-Light.ttf") format("ttf"), url("../fonts/BrutalType-Light.woff") format("woff"), url("../fonts/BrutalType-Light.woff2") format("woff2");
+  font-display: swap; }
+
+@font-face {
+  font-family: "Regular";
+  src: url("../fonts/BrutalType.eot") format("eot"), url("../fonts/BrutalType.ttf") format("ttf"), url("../fonts/BrutalType.woff") format("woff"), url("../fonts/BrutalType.woff2") format("woff2");
+  font-display: swap; }
+
+@font-face {
+  font-family: "Medium";
+  src: url("../fonts/BrutalType-Medium.eot") format("eot"), url("../fonts/BrutalType-Medium.ttf") format("ttf"), url("../fonts/BrutalType-Medium.woff") format("woff"), url("../fonts/BrutalType-Medium.woff2") format("woff2");
+  font-display: swap; }
+
+@font-face {
+  font-family: "Bold";
+  src: url("../fonts/BrutalType-Bold.eot") format("eot"), url("../fonts/BrutalType-Bold.ttf") format("ttf"), url("../fonts/BrutalType-Bold.woff") format("woff"), url("../fonts/BrutalType-Bold.woff2") format("woff2");
+  font-display: swap; }
+
+@font-face {
+  font-family: "Ex-bold";
+  src: url("../fonts/BrutalType-ExtraBold.eot") format("eot"), url("../fonts/BrutalType-ExtraBold.ttf") format("ttf"), url("../fonts/BrutalType-ExtraBold.woff") format("woff") url("../fonts/BrutalType-ExtraBold.woff2") format("woff2");
+  font-display: swap; }
